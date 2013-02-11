@@ -1,0 +1,505 @@
+MAP
+  EXTENT 460000 4628000 690000 4851000
+  FONTSET "../lib/fonts/fonts.txt"
+  IMAGECOLOR 255 255 255
+  IMAGETYPE png
+  RESOLUTION 96.000000
+  INTERLACE FALSE
+  SYMBOLSET "../lib/symbols/symbols.sym"
+  SIZE 600 500
+  STATUS ON
+  UNITS METERS
+  NAME "cdix"
+
+  OUTPUTFORMAT
+    NAME "png"
+    MIMETYPE "image/png"
+    DRIVER "GD/PNG"
+    EXTENSION "png"
+    IMAGEMODE "RGB"
+    TRANSPARENT FALSE
+    FORMATOPTION "INTERLACE=OFF"
+  END
+
+  OUTPUTFORMAT
+    NAME "jpeg"
+    MIMETYPE "image/jpeg"
+    DRIVER "AGG/JPEG"
+    EXTENSION "jpg"
+    IMAGEMODE "RGB"
+    TRANSPARENT FALSE
+    FORMATOPTION "QUALITY=70"
+  END
+
+  OUTPUTFORMAT
+    NAME "GTiff"
+    MIMETYPE "image/tiff"
+    DRIVER "GDAL/GTiff"
+    EXTENSION "tif"
+    IMAGEMODE "RGB"
+    TRANSPARENT FALSE
+  END
+
+  OUTPUTFORMAT
+    NAME "imagemap"
+    MIMETYPE "text/html"
+    DRIVER "imagemap"
+    EXTENSION "html"
+    IMAGEMODE "PC256"
+    TRANSPARENT FALSE
+    FORMATOPTION "SKIPENDTAG=OFF"
+  END
+
+  SYMBOL
+    NAME "circle"
+    TYPE ELLIPSE
+    FILLED TRUE
+    POINTS
+      1 1
+    END
+  END
+
+  SYMBOL
+    NAME "square"
+    TYPE VECTOR
+    FILLED TRUE
+    POINTS
+      0 1
+      0 0
+      1 0
+      1 1
+      0 1
+    END
+  END
+
+  PROJECTION
+    "init=epsg:25829"
+  END
+
+
+  LEGEND
+    IMAGECOLOR 255 255 255
+    KEYSIZE 20 10
+    KEYSPACING 5 5
+    LABEL
+      SIZE MEDIUM
+      TYPE BITMAP
+      BUFFER 0
+      COLOR 0 0 0
+      FORCE FALSE
+      MINDISTANCE -1
+      MINFEATURESIZE -1
+      OFFSET 0 0
+      PARTIALS TRUE
+    END
+    POSITION LL
+    STATUS OFF
+  END
+
+  QUERYMAP
+    COLOR 255 255 0
+    SIZE -1 -1
+    STATUS OFF
+    STYLE HILITE
+  END
+
+  SCALEBAR
+    ALIGN CENTER
+    BACKGROUNDCOLOR 100 100 100
+    COLOR 250 250 250
+    IMAGECOLOR 255 255 255
+    INTERVALS 4
+    LABEL
+      SIZE SMALL
+      TYPE BITMAP
+      BUFFER 0
+      COLOR 0 0 90
+      FORCE FALSE
+      MINDISTANCE -1
+      MINFEATURESIZE -1
+      OFFSET 0 0
+      PARTIALS TRUE
+    END
+    OUTLINECOLOR 0 0 0
+    POSITION LL
+    POSTLABELCACHE TRUE
+    SIZE 200 3
+    STATUS OFF
+    STYLE 0
+    TRANSPARENT FALSE
+    UNITS KILOMETERS
+  END
+
+  WEB
+    IMAGEPATH "/ms4w/tmp/ms_tmp/"
+    IMAGEURL "/ms_tmp/"
+    METADATA
+      "WMS_SRS"	"EPSG:25829  EPSG:4326"
+      "WMS_ONLINERESOURCE"	""
+      "WMS_ABSTRACT"	"CDIX"
+      "WMS_ACCESSCONSTRAINTS"	"none"
+      "WMS_TITLE"	"CDIX-IET Xunta"
+    END
+    QUERYFORMAT text/html
+    LEGENDFORMAT text/html
+    BROWSEFORMAT text/html
+    TEMPLATE "map.html"
+  END
+
+  LAYER
+    CONNECTION "dbname='cdix' host='localhost' port=5432 user='cdix_reader' password='cdix' sslmode=disable"
+    CONNECTIONTYPE POSTGIS
+    DATA 'the_geom FROM "malla5_etrs_concellos" USING UNIQUE gid USING srid=25829'
+    DUMP TRUE
+    EXTENT 460000 4628000 690000 4851000
+    LABELITEM "clasico"
+    LABELMAXSCALEDENOM 120000
+    METADATA
+      "ows_title"	"malla5_etrs_concellos"
+    END
+    NAME "malla5_etrs_concellos"
+    PROJECTION
+      "proj=utm"
+      "zone=29"
+      "ellps=GRS80"
+      "towgs84=0,0,0,0,0,0,0"
+      "units=m"
+      "no_defs"
+    END
+    STATUS OFF
+    TEMPLATE "fooOnlyForWMSGetFeatureInfo"
+    OPACITY 80
+    TYPE POLYGON
+    UNITS METERS
+    CLASS
+      NAME "malla5_etrs_concellos"
+      LABEL
+        ANGLE 0.000000
+        ANTIALIAS TRUE
+        FONT "arial-bold"
+        MAXSIZE 256
+        MINSIZE 4
+        SIZE 8
+        TYPE TRUETYPE
+        BUFFER 0
+        COLOR 204 16 16
+        FORCE TRUE
+        MINDISTANCE -1
+        MINFEATURESIZE -1
+        OFFSET 0 0
+        PARTIALS TRUE
+        POSITION CC
+      END
+      STYLE
+        ANGLE 360
+        OUTLINECOLOR 255 0 0
+        SYMBOL 0
+        WIDTH 1
+      END
+      STYLE 
+        GEOMTRANSFORM 'labelpoly'
+	COLOR 245 245 245
+      END
+    END
+  END
+
+  LAYER
+    CONNECTION "dbname='cdix' host='localhost' port=5432 user='cdix_reader' password='cdix' sslmode=disable"
+    CONNECTIONTYPE POSTGIS
+    DATA 'the_geom FROM "malla5_etrs_toponimia" USING UNIQUE gid USING srid=25829'
+    DUMP TRUE
+    EXTENT 460000 4628000 690000 4851000
+    LABELITEM "nome_folla"
+    LABELMAXSCALEDENOM 120000
+    METADATA
+      "ows_title"	"malla5_etrs_toponimia"
+    END
+    NAME "malla5_etrs_toponimia"
+    PROJECTION
+      "proj=utm"
+      "zone=29"
+      "ellps=GRS80"
+      "towgs84=0,0,0,0,0,0,0"
+      "units=m"
+      "no_defs"
+    END
+    STATUS OFF
+    TEMPLATE "fooOnlyForWMSGetFeatureInfo"
+    OPACITY 80
+    TYPE POLYGON
+    UNITS METERS
+    CLASS
+      NAME "malla5_etrs_toponimia"
+      LABEL
+        ANGLE 0.000000
+        ANTIALIAS TRUE
+        FONT "arial-bold"
+        MAXSIZE 256
+        MINSIZE 4
+        SIZE 8
+        TYPE TRUETYPE
+        BUFFER 0
+        COLOR 0 0 255
+        FORCE TRUE
+        MINDISTANCE -1
+        MINFEATURESIZE -1
+        OFFSET 0 0
+        PARTIALS TRUE
+        POSITION CC
+      END
+      STYLE
+        ANGLE 360
+        OUTLINECOLOR 0 0 255
+        SYMBOL 0
+        WIDTH 0.91
+      END
+      STYLE 
+        GEOMTRANSFORM 'labelpoly'
+	COLOR 245 245 245
+      END
+    END
+  END
+
+  LAYER
+    CONNECTION "dbname='cdix' host='localhost' port=5432 user='cdix_reader' password='cdix' sslmode=disable"
+    CONNECTIONTYPE POSTGIS
+    DATA 'the_geom FROM "malla_voo_americano" USING UNIQUE gid USING srid=25829'
+    DUMP TRUE
+    EXTENT 414759.274589 4622716.9375 733091.131661 4860754.5625
+    LABELITEM "folla50"
+    LABELMAXSCALEDENOM 700000
+    LABELMINSCALEDENOM 9000
+    METADATA
+      "ows_title"	"malla_voo_americano"
+    END
+    NAME "malla_voo_americano"
+    PROJECTION
+      "proj=utm"
+      "zone=29"
+      "ellps=GRS80"
+      "towgs84=0,0,0,0,0,0,0"
+      "units=m"
+      "no_defs"
+    END
+    STATUS OFF
+    TEMPLATE "fooOnlyForWMSGetFeatureInfo"
+    TYPE POLYGON
+    UNITS METERS
+    CLASS
+      NAME "malla_voo_americano"
+      LABEL
+        ANGLE 0.000000
+        ANTIALIAS TRUE
+        FONT "arial-bold"
+        MAXSIZE 256
+        MINSIZE 4
+        SIZE 12
+        TYPE TRUETYPE
+        BUFFER 0
+        COLOR 0 255 255
+        FORCE TRUE
+        MINDISTANCE -1
+        MINFEATURESIZE -1
+        OFFSET 0 0
+        PARTIALS TRUE
+        POSITION CC
+      END
+      STYLE
+        ANGLE 360
+        OUTLINECOLOR 55 237 246
+        SYMBOL 0
+        WIDTH 0.91
+      END
+      STYLE
+        GEOMTRANSFORM 'labelpoly'
+        COLOR 245 245 245
+      END
+    END
+  END
+
+  LAYER
+    CONNECTION "dbname='cdix' host='localhost' port=5432 user='cdix_reader' password='cdix' sslmode=disable"
+    CONNECTIONTYPE POSTGIS
+    DATA 'the_geom FROM "malla_lidar" USING UNIQUE gid USING srid=25829'
+    DUMP TRUE
+    EXTENT 422731.123058 4620399.4875 737268.876942 4855600.0125
+    LABELITEM "hoja"
+    LABELMAXSCALEDENOM 100000
+    METADATA
+      "ows_title"	"malla_lidar"
+    END
+    NAME "malla_lidar"
+    PROJECTION
+      "proj=utm"
+      "zone=29"
+      "ellps=GRS80"
+      "towgs84=0,0,0,0,0,0,0"
+      "units=m"
+      "no_defs"
+    END
+    STATUS OFF
+    TEMPLATE "fooOnlyForWMSGetFeatureInfo"
+    TYPE POLYGON
+    UNITS METERS
+    CLASS
+      NAME "malla_lidar"
+      LABEL
+        ANGLE 0.000000
+        ANTIALIAS TRUE
+        FONT "arial-bold"
+        MAXSIZE 256
+        MINSIZE 4
+        SIZE 8
+        TYPE TRUETYPE
+        BUFFER 0
+        COLOR 255 170 0
+        FORCE TRUE
+        MINDISTANCE -1
+        MINFEATURESIZE -1
+        OFFSET 0 0
+        PARTIALS TRUE
+        POSITION CC
+      END
+      STYLE
+        ANGLE 360
+        OUTLINECOLOR 255 170 0
+        SYMBOL 0
+        WIDTH 0.91
+      END
+      STYLE
+        GEOMTRANSFORM 'labelpoly'
+        COLOR 245 245 245
+      END
+    END
+  END
+  LAYER
+    CONNECTION "dbname='cdix' host='localhost' port=5432 user='cdix_reader' password='cdix' sslmode=disable"
+    CONNECTIONTYPE POSTGIS
+    DATA 'the_geom FROM "planeamento_bbox" USING UNIQUE gid USING srid=23029'
+    DUMP TRUE
+    EXTENT 460000 4628000 690000 4851000
+    LABELITEM "gid"
+    LABELMAXSCALEDENOM 120000
+    METADATA
+      "ows_title"	"planeamento_bbox"
+    END
+    NAME "planeamento_bbox"
+    PROJECTION
+      "proj=utm"
+      "zone=29"
+      "ellps=GRS80"
+      "towgs84=0,0,0,0,0,0,0"
+      "units=m"
+      "no_defs"
+    END
+
+    STATUS OFF
+    TEMPLATE "fooOnlyForWMSGetFeatureInfo"
+    OPACITY 80
+    TYPE POLYGON
+    UNITS METERS
+    CLASS
+      NAME "planeamento_bbox"
+      LABEL
+        ANGLE 0.000000
+        ANTIALIAS TRUE
+        FONT "arial-bold"
+        MAXSIZE 256
+        MINSIZE 4
+        SIZE 8
+        TYPE TRUETYPE
+        BUFFER 0
+        COLOR 200 120 240
+        FORCE TRUE
+        MINDISTANCE -1
+        MINFEATURESIZE -1
+        OFFSET 0 0
+        PARTIALS TRUE
+        POSITION CC
+      END
+      STYLE
+        ANGLE 360
+        OUTLINECOLOR 200 120 240
+        SYMBOL 0
+        WIDTH 1
+      END
+      STYLE
+        GEOMTRANSFORM 'labelpoly'
+        COLOR 245 245 245
+      END
+    END
+  END
+
+  LAYER
+    CONNECTION "dbname='cdix' host='localhost' port=5432 user='cdix_reader' password='cdix' sslmode=disable"
+    CONNECTIONTYPE POSTGIS
+    DATA 'the_geom FROM "cobertura_alturas" USING UNIQUE gid USING srid=25829'
+    DUMP TRUE
+    EXTENT 460000 4628000 690000 4851000
+      FILTER ( upper(geometrytype("the_geom")) IN ('POLYGON','MULTIPOLYGON') )
+    METADATA
+      "ows_title"	"cobertura_alturas"
+    END
+    NAME "cobertura_alturas"
+    PROJECTION
+      "proj=utm"
+      "zone=29"
+      "ellps=GRS80"
+      "towgs84=0,0,0,0,0,0,0"
+      "units=m"
+      "no_defs"
+    END
+    STATUS OFF
+    TEMPLATE "fooOnlyForWMSGetFeatureInfo"
+    OPACITY 70
+    TYPE POLYGON
+    UNITS METERS
+    CLASS
+      NAME "cobertura_alturas"
+      STYLE
+        ANGLE 360
+        COLOR 139 69 19
+        OUTLINECOLOR 0 0 0
+        SYMBOL 0
+        WIDTH 0.91
+      END
+    END
+  END
+
+  LAYER
+    CONNECTION "dbname='cdix' host='localhost' port=5432 user='cdix_reader' password='cdix' sslmode=disable"
+    CONNECTIONTYPE POSTGIS
+    DATA 'the_geom FROM "cobertura_orientacions" USING UNIQUE gid USING srid=25829'
+    DUMP TRUE
+    EXTENT 460000 4628000 690000 4851000
+      FILTER ( upper(geometrytype("the_geom")) IN ('POLYGON','MULTIPOLYGON') )
+    METADATA
+      "ows_title"	"cobertura_alturas"
+    END
+    NAME "cobertura_orientacions"
+    PROJECTION
+      "proj=utm"
+      "zone=29"
+      "ellps=GRS80"
+      "towgs84=0,0,0,0,0,0,0"
+      "units=m"
+      "no_defs"
+    END
+    STATUS OFF
+    TEMPLATE "fooOnlyForWMSGetFeatureInfo"
+    OPACITY 50
+    TYPE POLYGON
+    UNITS METERS
+    CLASS
+      NAME "cobertura_orientacions"
+      STYLE
+        ANGLE 360
+        COLOR 21 221 130
+        OUTLINECOLOR 0 0 0
+        SYMBOL 0
+        WIDTH 0.91
+      END
+    END
+  END
+
+END

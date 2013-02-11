@@ -1,0 +1,5 @@
+A poner en el RFC que despues de ejecutar en php5 -f ms_config.php:
+
+- Engadir a sentencia "MAXSIZE 4096" na linha despois de "SIZE ......" en cdix.map
+
+(Esto se debe a que un bug correxido na version mapserver-6) 
